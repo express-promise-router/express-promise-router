@@ -1,0 +1,49 @@
+{
+  "name": "express-promise-router",
+  "version": "0.0.1",
+  "main": "lib/express-promise-router.js",
+  "description": "A lightweight wrapper for Express 4's Router that allows middleware to return promises",
+  "homepage": "https://github.com/alex-whitney/express-promise-router",
+  "bugs": "https://github.com/alex-whitney/express-promise-router/issues",
+  "author": {
+    "name": "Alex Whitney",
+    "email": "alex.whitney@gatech.edu"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alex-whitney/express-promise-router"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "keywords": [
+    "express",
+    "promise",
+    "router"
+  ],
+  "dependencies": {
+    "lodash": "^2.4.1",
+    "methods": "^1.0.0"
+  },
+  "peerDependencies": {
+    "express": "4.x"
+  },
+  "devDependencies": {
+    "bluebird": "^1.2.4",
+    "chai": "^1.9.1",
+    "express": "4.x",
+    "grunt": "^0.4.4",
+    "grunt-contrib-jshint": "~0.7.0",
+    "grunt-mocha-test": "^0.10.2",
+    "jshint-stylish": "~0.1.3",
+    "load-grunt-tasks": "~0.2.0",
+    "request": "^2.34.0",
+    "sinon": "^1.9.1",
+    "time-grunt": "~0.2.0"
+  },
+  "scripts": {
+    "test": "grunt"
+  }
+}
