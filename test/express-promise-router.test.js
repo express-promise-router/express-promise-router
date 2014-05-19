@@ -106,24 +106,33 @@ describe('express-promise-router', function () {
         }).then(done, done);
     });
 
-    it('should call next with an error when a returned promise is resolved with anything', function (done) {
+    it('should not call next when a returned promise is resolved with anything other than "route" or "next"', function (done) {
         var callback = sinon.spy();
 
-        router.use('/foo', function () {
+        router.get('/foo', function (req, res) {
             return new Promise(function (resolve) {
+                res.send();
                 setTimeout(resolve('something'), 10);
             });
         });
-        router.use(function (err, req, res, next) {
-            assert.equal('something', err);
+        router.get('/bar', function (req, res) {
+            return new Promise(function (resolve) {
+                res.send();
+                setTimeout(resolve({}), 10);
+            });
+        });
+        router.use(function (req, res) {
             callback();
-            res.send();
+            res.send(500);
         });
 
         bootstrap(router).then(function () {
             return GET('/foo');
         }).then(function () {
-            assert(callback.calledOnce);
+            assert(callback.notCalled);
+            return GET('/bar');
+        }).then(function () {
+            assert(callback.notCalled);
         }).then(done, done);
     });
 
@@ -173,7 +182,7 @@ describe('express-promise-router', function () {
     it('should call chained handlers in the correct order', function (done) {
         var fn1 = sinon.spy(function () {
             assert(fn2.notCalled);
-            return Promise.resolve();
+            return Promise.resolve('next');
         });
         var fn2 = sinon.spy(function (req, res) {
             res.send();
