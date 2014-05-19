@@ -204,4 +204,17 @@ describe('express-promise-router', function () {
         }).then(done, done);
     });
 
+
+    it('should bind to RegExp routes', function (done) {
+        var fn1 = function (req, res) {
+            res.send();
+        };
+
+        router.get(/^\/foo/, fn1);
+
+        bootstrap(router).then(function () {
+            return GET('/foo');
+        }).then(done, done);
+    });
+
 });
