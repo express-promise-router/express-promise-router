@@ -6,6 +6,8 @@ var sinon = require('sinon');
 var express = require('express');
 var request = Promise.promisify(require('request'));
 
+var noop = function () {};
+
 var PromiseRouter = require('../lib/express-promise-router.js');
 
 describe('express-promise-router', function () {
@@ -19,6 +21,7 @@ describe('express-promise-router', function () {
             // Express sends 500 errors for uncaught exceptions (like failed assertions)
             // Make sure to still fail the test if an assertion in middleware failed.
             assert.equal(res.statusCode, 200);
+            return res;
         });
     };
 
@@ -192,7 +195,7 @@ describe('express-promise-router', function () {
 
         bootstrap(router).then(function () {
             return GET('/foo');
-        }).then(done, done);
+        }).then(noop).then(done, done);
     });
 
     it('should call next("route") if a returned promise is resolved with "route"', function (done) {
@@ -210,7 +213,7 @@ describe('express-promise-router', function () {
 
         bootstrap(router).then(function () {
             return GET('/foo');
-        }).then(done, done);
+        }).then(noop).then(done, done);
     });
 
 
@@ -223,6 +226,36 @@ describe('express-promise-router', function () {
 
         bootstrap(router).then(function () {
             return GET('/foo');
+        }).then(noop).then(done, done);
+    });
+
+    it('multiple calls to handlers that have used "next" should not interfere with each other', function (done) {
+        var fn = sinon.spy(function (req, res, next) {
+            if (fn.calledOnce) {
+                next('error');
+            } else {
+                setTimeout(function () {
+                    res.send(200, 'ok');
+                }, 15);
+            }
+        });
+        var errHandler = function (err, req, res, next) {
+            if (err === 'error') {
+                res.send('fail');
+            } else {
+                next(err);
+            }
+        };
+
+        router.get('/foo', fn, errHandler);
+
+        bootstrap(router).then(function () {
+            return GET('/foo');
+        }).then(function (res) {
+            assert.equal(res.body, 'fail');
+            return GET('/foo');
+        }).then(function (res) {
+            assert.equal(res.body, 'ok');
         }).then(done, done);
     });
 
