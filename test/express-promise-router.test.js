@@ -6,7 +6,11 @@ var sinon = require('sinon');
 var express = require('express');
 var request = Promise.promisify(require('request'));
 
-var noop = function () {};
+var delay = function (method, payload) {
+    setTimeout(function () {
+        method(payload);
+    }, 10);
+};
 
 var PromiseRouter = require('../lib/express-promise-router.js');
 
@@ -67,7 +71,7 @@ describe('express-promise-router', function () {
 
         router.use('/foo', function () {
             return new Promise(function (resolve, reject) {
-                setTimeout(reject('some error'), 10);
+                delay(reject, 'some error');
             });
         });
         router.use(function (err, req, res, next) {
@@ -80,7 +84,7 @@ describe('express-promise-router', function () {
             return GET('/foo');
         }).then(function () {
             assert(callback.calledOnce);
-        }).then(done, done);
+        }).nodeify(done);
     });
 
     it('should call next without an error when a returned promise is resolved with "next"', function (done) {
@@ -89,7 +93,7 @@ describe('express-promise-router', function () {
 
         router.use('/foo', function () {
             return new Promise(function (resolve) {
-                setTimeout(resolve('next'), 10);
+                delay(resolve, 'next');
             });
         });
         router.use('/foo', function (req, res) {
@@ -106,7 +110,7 @@ describe('express-promise-router', function () {
         }).then(function () {
             assert(errorCallback.notCalled);
             assert(nextCallback.calledOnce);
-        }).then(done, done);
+        }).nodeify(done);
     });
 
     it('should not call next when a returned promise is resolved with anything other than "route" or "next"', function (done) {
@@ -115,13 +119,13 @@ describe('express-promise-router', function () {
         router.get('/foo', function (req, res) {
             return new Promise(function (resolve) {
                 res.send();
-                setTimeout(resolve('something'), 10);
+                delay(resolve, 'something');
             });
         });
         router.get('/bar', function (req, res) {
             return new Promise(function (resolve) {
                 res.send();
-                setTimeout(resolve({}), 10);
+                delay(resolve, {});
             });
         });
         router.use(function (req, res) {
@@ -136,7 +140,7 @@ describe('express-promise-router', function () {
             return GET('/bar');
         }).then(function () {
             assert(callback.notCalled);
-        }).then(done, done);
+        }).nodeify(done);
     });
 
     it('should move to the next middleware when next is called without an error', function (done) {
@@ -154,7 +158,7 @@ describe('express-promise-router', function () {
             return GET('/foo');
         }).then(function () {
             assert(callback.calledOnce);
-        }).then(done, done);
+        }).nodeify(done);
     });
 
     it('should move to the next error handler when next is called with an error', function (done) {
@@ -179,7 +183,7 @@ describe('express-promise-router', function () {
         }).then(function () {
             assert(errorCallback.calledOnce);
             assert(callback.notCalled);
-        }).then(done, done);
+        }).nodeify(done);
     });
 
     it('should call chained handlers in the correct order', function (done) {
@@ -195,7 +199,7 @@ describe('express-promise-router', function () {
 
         bootstrap(router).then(function () {
             return GET('/foo');
-        }).then(noop).then(done, done);
+        }).nodeify(done);
     });
 
     it('should call next("route") if a returned promise is resolved with "route"', function (done) {
@@ -213,7 +217,7 @@ describe('express-promise-router', function () {
 
         bootstrap(router).then(function () {
             return GET('/foo');
-        }).then(noop).then(done, done);
+        }).nodeify(done);
     });
 
 
@@ -226,7 +230,7 @@ describe('express-promise-router', function () {
 
         bootstrap(router).then(function () {
             return GET('/foo');
-        }).then(noop).then(done, done);
+        }).nodeify(done);
     });
 
     it('multiple calls to handlers that have used "next" should not interfere with each other', function (done) {
@@ -256,7 +260,49 @@ describe('express-promise-router', function () {
             return GET('/foo');
         }).then(function (res) {
             assert.equal(res.body, 'ok');
-        }).then(done, done);
+        }).nodeify(done);
+    });
+
+    it('calls next if next is called even if the handler returns a promise', function (done) {
+        var fn = function (req, res, next) {
+            next();
+            return new Promise(function (resolve, reject) {
+                delay(reject, 'fail');
+            });
+        };
+        var fn2 = function (req, res) {
+            res.send('ok');
+        };
+        var errHandler = function (err, req, res, next) {
+            res.send('error');
+        };
+
+        router.get('/foo', fn, fn2, errHandler);
+
+        bootstrap(router).then(function () {
+            return GET('/foo');
+        }).then(function (res) {
+            assert.equal(res.body, 'ok');
+        }).nodeify(done);
+    });
+
+    it('calls next with an error if the returned promise is rejected with no reason', function (done) {
+        var fn = function () {
+            return new Promise(function (resolve, reject) {
+                delay(reject, null);
+            });
+        };
+        var errHandler = function (err, req, res, next) {
+            res.send('error');
+        };
+
+        router.get('/foo', fn, errHandler);
+
+        bootstrap(router).then(function () {
+            return GET('/foo');
+        }).then(function (res) {
+                assert.equal(res.body, 'error');
+            }).nodeify(done);
     });
 
 });

@@ -1,6 +1,6 @@
 {
   "name": "express-promise-router",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "main": "lib/express-promise-router.js",
   "description": "A lightweight wrapper for Express 4's Router that allows middleware to return promises",
   "homepage": "https://github.com/alex-whitney/express-promise-router",
@@ -24,6 +24,7 @@
     "router"
   ],
   "dependencies": {
+    "bluebird": "^2.3.0",
     "lodash": "^2.4.1",
     "methods": "^1.0.0"
   },
@@ -31,7 +32,6 @@
     "express": "4.x"
   },
   "devDependencies": {
-    "bluebird": "^1.2.4",
     "chai": "^1.9.1",
     "express": "4.x",
     "grunt": "^0.4.4",
