@@ -301,8 +301,25 @@ describe('express-promise-router', function () {
         bootstrap(router).then(function () {
             return GET('/foo');
         }).then(function (res) {
-                assert.equal(res.body, 'error');
-            }).nodeify(done);
+            assert.equal(res.body, 'error');
+        }).nodeify(done);
+    });
+
+    it('should handle resolved promises returned in req.param() calls', function (done) {
+        router.param('id', function () {
+            return new Promise(function (resolve) {
+                delay(resolve, 'next');
+            });
+        });
+        router.use('/foo/:id', function (req, res) {
+            res.send('done');
+        });
+
+        bootstrap(router).then(function () {
+            return GET('/foo/1');
+        }).then(function (res) {
+            assert.equal(res.body, 'done');
+        }).nodeify(done);
     });
 
 });
