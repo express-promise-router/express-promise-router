@@ -239,7 +239,7 @@ describe('express-promise-router', function () {
                 next('error');
             } else {
                 setTimeout(function () {
-                    res.send(200, 'ok');
+                    res.status(200).send('ok');
                 }, 15);
             }
         });
