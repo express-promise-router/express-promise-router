@@ -267,7 +267,6 @@ describe('express-promise-router', function () {
         var fn = function (req, res, next) {
             next();
             return new Promise(function (resolve, reject) {
-                delay(reject, 'fail');
             });
         };
         var fn2 = function (req, res) {
