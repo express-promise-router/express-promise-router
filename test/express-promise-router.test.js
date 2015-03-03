@@ -202,6 +202,22 @@ describe('express-promise-router', function () {
         }).nodeify(done);
     });
 
+    it('should correctly call an array of handlers', function (done) {
+        var fn1 = sinon.spy(function () {
+            assert(fn2.notCalled);
+            return Promise.resolve('next');
+        });
+        var fn2 = sinon.spy(function (req, res) {
+            res.send();
+        });
+
+        router.get('/foo', [[fn1], [fn2]]);
+
+        bootstrap(router).then(function () {
+            return GET('/foo');
+        }).nodeify(done);
+    });
+
     it('should call next("route") if a returned promise is resolved with "route"', function (done) {
         var fn1 = function () {
             return Promise.resolve('route');
