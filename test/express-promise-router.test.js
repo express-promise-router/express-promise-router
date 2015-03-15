@@ -118,13 +118,11 @@ describe('express-promise-router', function () {
 
         router.get('/foo', function (req, res) {
             return new Promise(function (resolve) {
-                res.send();
                 delay(resolve, 'something');
             });
         });
         router.get('/bar', function (req, res) {
             return new Promise(function (resolve) {
-                res.send();
                 delay(resolve, {});
             });
         });
@@ -334,6 +332,20 @@ describe('express-promise-router', function () {
             return GET('/foo/1');
         }).then(function (res) {
             assert.equal(res.body, 'done');
+        }).nodeify(done);
+    });
+
+    it('should output resolved promise value', function (done) {
+        router.use('/foo', function (req, res) {
+            return new Promise(function(resolve) {
+                delay(resolve, { foo: 'bar' });
+            });
+        });
+
+        bootstrap(router).then(function () {
+            return GET('/foo');
+        }).then(function (res) {
+            assert.equal(res.body, '{"foo":"bar"}');
         }).nodeify(done);
     });
 

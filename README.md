@@ -53,6 +53,16 @@ router.use('/url', function (req, res, next) {
 });
 ```
 
+The resolved value is automatically sent through the response via `res.send`.
+```javascript
+router = require('express-promise-router')();
+
+// outputs '{"foo":"bar"}' JSON data
+router.use('/url', function (req, res, next) {
+    return Promise.resolve({ foo: 'bar' });
+});
+```
+
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
