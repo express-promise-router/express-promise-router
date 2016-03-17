@@ -337,4 +337,31 @@ describe('express-promise-router', function () {
         }).nodeify(done);
     });
 
+    it('should call next with unresolved promises returned in req.param() calls', function (done) {
+        var assertOutput = 'error in param';
+
+        router.param('id', function (req, res, next, id) {
+            return new Promise(function (resolve, reject) {
+                delay(reject, assertOutput);
+            });
+        });
+
+        var fn = function(req, res) {
+            res.send('done');
+        };
+
+        var errHandler = function (err, req, res, next) {
+            res.send(err);
+        };
+
+        router.use('/foo/:id', fn);
+
+        router.use(errHandler);
+
+        bootstrap(router).then(function () {
+            return GET('/foo/1');
+        }).then(function (res) {
+            assert.equal(res.body, assertOutput);
+        }).nodeify(done);
+    });
 });
