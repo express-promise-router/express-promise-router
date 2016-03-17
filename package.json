@@ -35,6 +35,7 @@
     "chai": "^1.9.1",
     "express": "4.x",
     "grunt": "^0.4.4",
+    "grunt-cli": "^0.1.13",
     "grunt-contrib-jshint": "~0.7.0",
     "grunt-mocha-test": "^0.10.2",
     "jshint-stylish": "~0.1.3",
