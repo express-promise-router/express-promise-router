@@ -365,6 +365,22 @@ describe('express-promise-router', function () {
         }).nodeify(done);
     });
 
+    it('support array in routes values', function (done) {
+        router.use(['/', '/foo/:bar'], function(req, res) {
+            res.send('done');
+        });
+
+        bootstrap(router).then(function () {
+            return GET('/');
+        }).then(function (res) {
+            assert.equal(res.body, 'done');
+
+            return GET('/foo/1');
+        }).then(function (res) {
+            assert.equal(res.body, 'done');
+        }).nodeify(done);
+    });
+
     it('should throw sensible errors when handler is not a function', function () {
         assert.throws(function () {
             router.use('/foo/:id', null);
