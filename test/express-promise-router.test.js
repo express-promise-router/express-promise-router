@@ -364,4 +364,10 @@ describe('express-promise-router', function () {
             assert.equal(res.body, assertOutput);
         }).nodeify(done);
     });
+
+    it('should throw sensible errors when handler is not a function', function () {
+        assert.throws(function () {
+            router.use('/foo/:id', null);
+        }, /callback/);
+    });
 });
