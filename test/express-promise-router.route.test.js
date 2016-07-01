@@ -4,7 +4,7 @@ var assert = require('chai').assert;
 var Promise = require('bluebird');
 var sinon = require('sinon');
 var express = require('express');
-var request = Promise.promisify(require('request'));
+var request = require('request-promise');
 
 var delay = function (method, payload) {
     setTimeout(function () {
@@ -21,7 +21,7 @@ describe('new Router().route(...)', function () {
     var router;
 
     var GET = function (route) {
-        return request('http://localhost:12345' + route).spread(function (res) {
+        return request({url: 'http://localhost:12345' + route, resolveWithFullResponse: true}).then(function (res) {
             // Express sends 500 errors for uncaught exceptions (like failed assertions)
             // Make sure to still fail the test if an assertion in middleware failed.
             assert.equal(res.statusCode, 200);
