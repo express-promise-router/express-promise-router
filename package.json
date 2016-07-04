@@ -32,7 +32,7 @@
     "express": "4.x"
   },
   "devDependencies": {
-    "chai": "^1.9.1",
+    "chai": "^3.5.0",
     "express": "4.x",
     "grunt": "^0.4.4",
     "grunt-cli": "^0.1.13",
