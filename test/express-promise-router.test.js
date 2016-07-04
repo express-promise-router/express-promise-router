@@ -187,12 +187,12 @@ describe('express-promise-router', function () {
     });
 
     it('should call chained handlers in the correct order', function (done) {
-        var fn1 = sinon.spy(function () {
+	    var fn2 = sinon.spy(function (req, res) {
+		    res.send();
+	    });
+	    var fn1 = sinon.spy(function () {
             assert(fn2.notCalled);
             return Promise.resolve('next');
-        });
-        var fn2 = sinon.spy(function (req, res) {
-            res.send();
         });
 
         router.get('/foo', fn1, fn2);
@@ -203,12 +203,12 @@ describe('express-promise-router', function () {
     });
 
     it('should correctly call an array of handlers', function (done) {
+	    var fn2 = sinon.spy(function (req, res) {
+		    res.send();
+	    });
         var fn1 = sinon.spy(function () {
             assert(fn2.notCalled);
             return Promise.resolve('next');
-        });
-        var fn2 = sinon.spy(function (req, res) {
-            res.send();
         });
 
         router.get('/foo', [[fn1], [fn2]]);
