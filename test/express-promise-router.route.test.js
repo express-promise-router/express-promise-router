@@ -33,7 +33,9 @@ describe('new Router().route(...)', function () {
         app = express();
         app.use('/', router);
 
-        if (serverListening) { throw 'already bootstrapped'; }
+        if (serverListening) {
+            throw 'already bootstrapped';
+        }
 
         serverListening = new Promise(function (resolve, reject) {
             server = app.listen(12345, function (err) {
@@ -53,8 +55,7 @@ describe('new Router().route(...)', function () {
     });
 
     afterEach(function (done) {
-        if (serverListening)
-        {
+        if (serverListening) {
             serverListening.then(function () {
                 server.close();
                 app = undefined;
@@ -193,9 +194,9 @@ describe('new Router().route(...)', function () {
     });
 
     it('should call chained handlers in the correct order', function (done) {
-	    var fn2 = sinon.spy(function (req, res) {
-		    res.send();
-	    });
+        var fn2 = sinon.spy(function (req, res) {
+            res.send();
+        });
         var fn1 = sinon.spy(function () {
             assert(fn2.notCalled);
             return Promise.resolve('next');
@@ -209,10 +210,10 @@ describe('new Router().route(...)', function () {
     });
 
     it('should correctly call an array of handlers', function (done) {
-	    var fn2 = sinon.spy(function (req, res) {
-		    res.send();
-	    });
-    	var fn1 = sinon.spy(function () {
+        var fn2 = sinon.spy(function (req, res) {
+            res.send();
+        });
+        var fn1 = sinon.spy(function () {
             assert(fn2.notCalled);
             return Promise.resolve('next');
         });
@@ -234,7 +235,7 @@ describe('new Router().route(...)', function () {
 
         router.route('/foo')
         .get(fn1, fn2);
-        
+
         router.route('/foo')
         .get(function (req, res) {
             res.send();

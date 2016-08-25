@@ -33,7 +33,9 @@ describe('express-promise-router', function () {
         app = express();
         app.use('/', router);
 
-        if (serverListening) { throw 'already bootstrapped'; }
+        if (serverListening) {
+            throw 'already bootstrapped';
+        }
 
         serverListening = new Promise(function (resolve, reject) {
             server = app.listen(12345, function (err) {
@@ -53,8 +55,7 @@ describe('express-promise-router', function () {
     });
 
     afterEach(function (done) {
-        if (serverListening)
-        {
+        if (serverListening) {
             serverListening.then(function () {
                 server.close();
                 app = undefined;
@@ -187,10 +188,10 @@ describe('express-promise-router', function () {
     });
 
     it('should call chained handlers in the correct order', function (done) {
-	    var fn2 = sinon.spy(function (req, res) {
-		    res.send();
-	    });
-	    var fn1 = sinon.spy(function () {
+        var fn2 = sinon.spy(function (req, res) {
+            res.send();
+        });
+        var fn1 = sinon.spy(function () {
             assert(fn2.notCalled);
             return Promise.resolve('next');
         });
@@ -203,9 +204,9 @@ describe('express-promise-router', function () {
     });
 
     it('should correctly call an array of handlers', function (done) {
-	    var fn2 = sinon.spy(function (req, res) {
-		    res.send();
-	    });
+        var fn2 = sinon.spy(function (req, res) {
+            res.send();
+        });
         var fn1 = sinon.spy(function () {
             assert(fn2.notCalled);
             return Promise.resolve('next');
@@ -346,7 +347,7 @@ describe('express-promise-router', function () {
             });
         });
 
-        var fn = function(req, res) {
+        var fn = function (req, res) {
             res.send('done');
         };
 
@@ -366,7 +367,7 @@ describe('express-promise-router', function () {
     });
 
     it('support array in routes values', function (done) {
-        router.use(['/', '/foo/:bar'], function(req, res) {
+        router.use(['/', '/foo/:bar'], function (req, res) {
             res.send('done');
         });
 
