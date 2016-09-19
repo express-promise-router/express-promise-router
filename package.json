@@ -24,25 +24,26 @@
     "router"
   ],
   "dependencies": {
-    "bluebird": "^2.3.0",
-    "lodash": "^3.3.1",
+    "bluebird": "^3.4.1",
+    "lodash": "^4.13.1",
     "methods": "^1.0.0"
   },
   "peerDependencies": {
     "express": "4.x"
   },
   "devDependencies": {
-    "chai": "^1.9.1",
+    "chai": "^3.5.0",
     "express": "4.x",
-    "grunt": "^0.4.4",
-    "grunt-cli": "^0.1.13",
-    "grunt-contrib-jshint": "~0.7.0",
-    "grunt-mocha-test": "^0.10.2",
-    "jshint-stylish": "~0.1.3",
-    "load-grunt-tasks": "~0.2.0",
-    "request": "^2.34.0",
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-jshint": "~1.0.0",
+    "grunt-mocha-test": "^0.12.7",
+    "jshint-stylish": "~2.2.0",
+    "load-grunt-tasks": "~3.5.0",
+    "mocha": "^2.5.3",
+    "request-promise": "^3.0.0",
     "sinon": "^1.9.1",
-    "time-grunt": "~0.2.0"
+    "time-grunt": "~1.3.0"
   },
   "scripts": {
     "test": "grunt"

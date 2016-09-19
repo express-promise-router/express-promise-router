@@ -4,7 +4,7 @@ var assert = require('chai').assert;
 var Promise = require('bluebird');
 var sinon = require('sinon');
 var express = require('express');
-var request = Promise.promisify(require('request'));
+var request = require('request-promise');
 
 var delay = function (method, payload) {
     setTimeout(function () {
@@ -21,7 +21,7 @@ describe('new Router().route(...)', function () {
     var router;
 
     var GET = function (route) {
-        return request('http://localhost:12345' + route).spread(function (res) {
+        return request({url: 'http://localhost:12345' + route, resolveWithFullResponse: true}).then(function (res) {
             // Express sends 500 errors for uncaught exceptions (like failed assertions)
             // Make sure to still fail the test if an assertion in middleware failed.
             assert.equal(res.statusCode, 200);
@@ -33,7 +33,9 @@ describe('new Router().route(...)', function () {
         app = express();
         app.use('/', router);
 
-        if (serverListening) { throw 'already bootstrapped'; }
+        if (serverListening) {
+            throw 'already bootstrapped';
+        }
 
         serverListening = new Promise(function (resolve, reject) {
             server = app.listen(12345, function (err) {
@@ -53,8 +55,7 @@ describe('new Router().route(...)', function () {
     });
 
     afterEach(function (done) {
-        if (serverListening)
-        {
+        if (serverListening) {
             serverListening.then(function () {
                 server.close();
                 app = undefined;
@@ -193,12 +194,12 @@ describe('new Router().route(...)', function () {
     });
 
     it('should call chained handlers in the correct order', function (done) {
+        var fn2 = sinon.spy(function (req, res) {
+            res.send();
+        });
         var fn1 = sinon.spy(function () {
             assert(fn2.notCalled);
             return Promise.resolve('next');
-        });
-        var fn2 = sinon.spy(function (req, res) {
-            res.send();
         });
 
         router.route('/foo').get(fn1, fn2);
@@ -209,12 +210,12 @@ describe('new Router().route(...)', function () {
     });
 
     it('should correctly call an array of handlers', function (done) {
+        var fn2 = sinon.spy(function (req, res) {
+            res.send();
+        });
         var fn1 = sinon.spy(function () {
             assert(fn2.notCalled);
             return Promise.resolve('next');
-        });
-        var fn2 = sinon.spy(function (req, res) {
-            res.send();
         });
 
         router.route('/foo').get([[fn1], [fn2]]);
@@ -234,7 +235,7 @@ describe('new Router().route(...)', function () {
 
         router.route('/foo')
         .get(fn1, fn2);
-        
+
         router.route('/foo')
         .get(function (req, res) {
             res.send();
