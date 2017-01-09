@@ -25,6 +25,7 @@
   ],
   "dependencies": {
     "bluebird": "^3.4.1",
+    "is-promise": "^2.1.0",
     "lodash": "^4.13.1",
     "methods": "^1.0.0"
   },
