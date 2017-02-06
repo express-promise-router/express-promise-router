@@ -8,23 +8,8 @@ module.exports = function (grunt) {
 
   // Project configuration.
   grunt.initConfig({
-    jshint: {
-      options: {
-        jshintrc: '.jshintrc',
-        reporter: require('jshint-stylish')
-      },
-      gruntfile: {
-        src: 'Gruntfile.js'
-      },
-      lib: {
-        src: ['lib/**/*.js']
-      },
-      test: {
-        src: ['test/**/*.test.js'],
-        options: {
-          jshintrc: 'test/.jshintrc'
-        }
-      }
+    eslint: {
+      target: ['lib/**/*', 'test/**/*', 'Gruntfile.js']
     },
     mochaTest: {
       test: {
@@ -37,6 +22,6 @@ module.exports = function (grunt) {
   });
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'mochaTest']);
+  grunt.registerTask('default', ['eslint', 'mochaTest']);
 
 };

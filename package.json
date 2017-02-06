@@ -37,6 +37,7 @@
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "grunt-contrib-jshint": "~1.0.0",
+    "grunt-eslint": "^19.0.0",
     "grunt-mocha-test": "^0.12.7",
     "jshint-stylish": "~2.2.0",
     "load-grunt-tasks": "~3.5.0",
