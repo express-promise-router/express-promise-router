@@ -7,5 +7,6 @@
   "noarg": true,
   "undef": true,
   "unused": true,
-  "node": true
+  "node": true,
+  "predef": ["Promise"]
 }

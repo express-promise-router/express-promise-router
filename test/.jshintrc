@@ -7,5 +7,5 @@
     "noarg": true,
     "undef": true,
     "node": true,
-    "predef": [ "it", "describe", "beforeEach", "afterEach", "before", "after" ]
+    "predef": [ "it", "describe", "beforeEach", "afterEach", "before", "after", "Promise" ]
 }
