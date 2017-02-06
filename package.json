@@ -34,7 +34,6 @@
     "express": "4.x"
   },
   "devDependencies": {
-    "bluebird": "^3.4.1",
     "chai": "^3.5.0",
     "express": "4.x",
     "grunt": "^1.0.1",
