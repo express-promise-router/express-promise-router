@@ -1,7 +1,6 @@
 'use strict';
 
 var assert = require('chai').assert;
-var Promise = require('bluebird');
 var sinon = require('sinon');
 var express = require('express');
 var request = require('request-promise');
