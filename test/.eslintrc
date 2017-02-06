@@ -24,7 +24,6 @@
         "functions": false
       }
     ],
-    "new-cap": 2,
     "no-caller": 2,
     "no-undef": 2
   }
