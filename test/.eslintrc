@@ -1,11 +1,6 @@
 {
-  "globals": {
-    "it": true,
-    "describe": true,
-    "beforeEach": true,
-    "afterEach": true,
-    "before": true,
-    "after": true
+  "env": {
+    "mocha": true
   },
   "rules": {
     "no-unused-vars": 0
