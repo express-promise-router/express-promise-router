@@ -2,7 +2,9 @@
   "env": {
     "node": true
   },
-  "globals": {},
+  "globals": {
+    "Promise": true
+  },
   "rules": {
     "curly": 2,
     "eqeqeq": 2,

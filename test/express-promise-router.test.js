@@ -1,7 +1,6 @@
 'use strict';
 
 var assert = require('chai').assert;
-var Promise = require('bluebird');
 var sinon = require('sinon');
 var express = require('express');
 var request = require('request-promise');
@@ -54,20 +53,18 @@ describe('express-promise-router', function () {
         router = new PromiseRouter();
     });
 
-    afterEach(function (done) {
+    afterEach(function () {
         if (serverListening) {
-            serverListening.then(function () {
+            return serverListening.then(function () {
                 server.close();
                 app = undefined;
                 server = undefined;
                 serverListening = undefined;
-            }).then(done, done);
-        } else {
-            done();
+            });
         }
     });
 
-    it('should call next with an error when a returned promise is rejected', function (done) {
+    it('should call next with an error when a returned promise is rejected', function () {
         var callback = sinon.spy();
 
         router.use('/foo', function () {
@@ -81,14 +78,14 @@ describe('express-promise-router', function () {
             res.send();
         });
 
-        bootstrap(router).then(function () {
+        return bootstrap(router).then(function () {
             return GET('/foo');
         }).then(function () {
             assert(callback.calledOnce);
-        }).nodeify(done);
+        });
     });
 
-    it('should call next without an error when a returned promise is resolved with "next"', function (done) {
+    it('should call next without an error when a returned promise is resolved with "next"', function () {
         var errorCallback = sinon.spy();
         var nextCallback = sinon.spy();
 
@@ -106,15 +103,15 @@ describe('express-promise-router', function () {
             next();
         });
 
-        bootstrap(router).then(function () {
+        return bootstrap(router).then(function () {
             return GET('/foo');
         }).then(function () {
             assert(errorCallback.notCalled);
             assert(nextCallback.calledOnce);
-        }).nodeify(done);
+        });
     });
 
-    it('should not call next when a returned promise is resolved with anything other than "route" or "next"', function (done) {
+    it('should not call next when a returned promise is resolved with anything other than "route" or "next"', function () {
         var callback = sinon.spy();
 
         router.get('/foo', function (req, res) {
@@ -134,17 +131,17 @@ describe('express-promise-router', function () {
             res.send(500);
         });
 
-        bootstrap(router).then(function () {
+        return bootstrap(router).then(function () {
             return GET('/foo');
         }).then(function () {
             assert(callback.notCalled);
             return GET('/bar');
         }).then(function () {
             assert(callback.notCalled);
-        }).nodeify(done);
+        });
     });
 
-    it('should move to the next middleware when next is called without an error', function (done) {
+    it('should move to the next middleware when next is called without an error', function () {
         var callback = sinon.spy();
 
         router.use('/foo', function (req, res, next) {
@@ -155,14 +152,14 @@ describe('express-promise-router', function () {
             res.send();
         });
 
-        bootstrap(router).then(function () {
+        return bootstrap(router).then(function () {
             return GET('/foo');
         }).then(function () {
             assert(callback.calledOnce);
-        }).nodeify(done);
+        });
     });
 
-    it('should move to the next error handler when next is called with an error', function (done) {
+    it('should move to the next error handler when next is called with an error', function () {
         var callback = sinon.spy();
         var errorCallback = sinon.spy();
 
@@ -179,15 +176,15 @@ describe('express-promise-router', function () {
             res.send();
         });
 
-        bootstrap(router).then(function () {
+        return bootstrap(router).then(function () {
             return GET('/foo');
         }).then(function () {
             assert(errorCallback.calledOnce);
             assert(callback.notCalled);
-        }).nodeify(done);
+        });
     });
 
-    it('should call chained handlers in the correct order', function (done) {
+    it('should call chained handlers in the correct order', function () {
         var fn2 = sinon.spy(function (req, res) {
             res.send();
         });
@@ -198,12 +195,12 @@ describe('express-promise-router', function () {
 
         router.get('/foo', fn1, fn2);
 
-        bootstrap(router).then(function () {
+        return bootstrap(router).then(function () {
             return GET('/foo');
-        }).nodeify(done);
+        });
     });
 
-    it('should correctly call an array of handlers', function (done) {
+    it('should correctly call an array of handlers', function () {
         var fn2 = sinon.spy(function (req, res) {
             res.send();
         });
@@ -214,12 +211,12 @@ describe('express-promise-router', function () {
 
         router.get('/foo', [[fn1], [fn2]]);
 
-        bootstrap(router).then(function () {
+        return bootstrap(router).then(function () {
             return GET('/foo');
-        }).nodeify(done);
+        });
     });
 
-    it('should call next("route") if a returned promise is resolved with "route"', function (done) {
+    it('should call next("route") if a returned promise is resolved with "route"', function () {
         var fn1 = function () {
             return Promise.resolve('route');
         };
@@ -232,25 +229,25 @@ describe('express-promise-router', function () {
             res.send();
         });
 
-        bootstrap(router).then(function () {
+        return bootstrap(router).then(function () {
             return GET('/foo');
-        }).nodeify(done);
+        });
     });
 
 
-    it('should bind to RegExp routes', function (done) {
+    it('should bind to RegExp routes', function () {
         var fn1 = function (req, res) {
             res.send();
         };
 
         router.get(/^\/foo/, fn1);
 
-        bootstrap(router).then(function () {
+        return bootstrap(router).then(function () {
             return GET('/foo');
-        }).nodeify(done);
+        });
     });
 
-    it('multiple calls to handlers that have used "next" should not interfere with each other', function (done) {
+    it('multiple calls to handlers that have used "next" should not interfere with each other', function () {
         var fn = sinon.spy(function (req, res, next) {
             if (fn.calledOnce) {
                 next('error');
@@ -270,17 +267,17 @@ describe('express-promise-router', function () {
 
         router.get('/foo', fn, errHandler);
 
-        bootstrap(router).then(function () {
+        return bootstrap(router).then(function () {
             return GET('/foo');
         }).then(function (res) {
             assert.equal(res.body, 'fail');
             return GET('/foo');
         }).then(function (res) {
             assert.equal(res.body, 'ok');
-        }).nodeify(done);
+        });
     });
 
-    it('calls next if next is called even if the handler returns a promise', function (done) {
+    it('calls next if next is called even if the handler returns a promise', function () {
         var fn = function (req, res, next) {
             next();
             return new Promise(function (resolve, reject) {
@@ -295,14 +292,14 @@ describe('express-promise-router', function () {
 
         router.get('/foo', fn, fn2, errHandler);
 
-        bootstrap(router).then(function () {
+        return bootstrap(router).then(function () {
             return GET('/foo');
         }).then(function (res) {
             assert.equal(res.body, 'ok');
-        }).nodeify(done);
+        });
     });
 
-    it('calls next with an error if the returned promise is rejected with no reason', function (done) {
+    it('calls next with an error if the returned promise is rejected with no reason', function () {
         var fn = function () {
             return new Promise(function (resolve, reject) {
                 delay(reject, null);
@@ -314,14 +311,14 @@ describe('express-promise-router', function () {
 
         router.get('/foo', fn, errHandler);
 
-        bootstrap(router).then(function () {
+        return bootstrap(router).then(function () {
             return GET('/foo');
         }).then(function (res) {
             assert.equal(res.body, 'error');
-        }).nodeify(done);
+        });
     });
 
-    it('should handle resolved promises returned in req.param() calls', function (done) {
+    it('should handle resolved promises returned in req.param() calls', function () {
         router.param('id', function () {
             return new Promise(function (resolve) {
                 delay(resolve, 'next');
@@ -331,14 +328,14 @@ describe('express-promise-router', function () {
             res.send('done');
         });
 
-        bootstrap(router).then(function () {
+        return bootstrap(router).then(function () {
             return GET('/foo/1');
         }).then(function (res) {
             assert.equal(res.body, 'done');
-        }).nodeify(done);
+        });
     });
 
-    it('should call next with unresolved promises returned in req.param() calls', function (done) {
+    it('should call next with unresolved promises returned in req.param() calls', function () {
         var assertOutput = 'error in param';
 
         router.param('id', function (req, res, next, id) {
@@ -359,19 +356,19 @@ describe('express-promise-router', function () {
 
         router.use(errHandler);
 
-        bootstrap(router).then(function () {
+        return bootstrap(router).then(function () {
             return GET('/foo/1');
         }).then(function (res) {
             assert.equal(res.body, assertOutput);
-        }).nodeify(done);
+        });
     });
 
-    it('support array in routes values', function (done) {
+    it('support array in routes values', function () {
         router.use(['/', '/foo/:bar'], function (req, res) {
             res.send('done');
         });
 
-        bootstrap(router).then(function () {
+        return bootstrap(router).then(function () {
             return GET('/');
         }).then(function (res) {
             assert.equal(res.body, 'done');
@@ -379,7 +376,7 @@ describe('express-promise-router', function () {
             return GET('/foo/1');
         }).then(function (res) {
             assert.equal(res.body, 'done');
-        }).nodeify(done);
+        });
     });
 
     it('should throw sensible errors when handler is not a function', function () {
