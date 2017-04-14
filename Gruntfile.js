@@ -1,42 +1,26 @@
 'use strict';
 
 module.exports = function (grunt) {
-  // Show elapsed time at the end
-  require('time-grunt')(grunt);
-  // Load all grunt tasks
-  require('load-grunt-tasks')(grunt);
+    // Show elapsed time at the end
+    require('time-grunt')(grunt);
+    // Load all grunt tasks
+    require('load-grunt-tasks')(grunt);
 
-  // Project configuration.
-  grunt.initConfig({
-    jshint: {
-      options: {
-        jshintrc: '.jshintrc',
-        reporter: require('jshint-stylish')
-      },
-      gruntfile: {
-        src: 'Gruntfile.js'
-      },
-      lib: {
-        src: ['lib/**/*.js']
-      },
-      test: {
-        src: ['test/**/*.test.js'],
-        options: {
-          jshintrc: 'test/.jshintrc'
-        }
-      }
-    },
-    mochaTest: {
-      test: {
-        options: {
-          reporter: 'spec'
+    // Project configuration.
+    grunt.initConfig({
+        eslint: {
+            target: ['lib/**/*', 'test/**/*', 'Gruntfile.js']
         },
-        src: ['test/**/*.js']
-      }
-    }
-  });
+        mochaTest: {
+            test: {
+                options: {
+                    reporter: 'spec'
+                },
+                src: ['test/**/*.js']
+            }
+        }
+    });
 
-  // Default task.
-  grunt.registerTask('default', ['jshint', 'mochaTest']);
-
+    // Default task.
+    grunt.registerTask('default', ['eslint', 'mochaTest']);
 };
