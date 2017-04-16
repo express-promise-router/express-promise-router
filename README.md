@@ -58,7 +58,17 @@ router.use('/url', function (req, res, next) {
 
 
 ## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
+Add unit tests for any new or changed functionality.
+Lint and test your code using `npm test`.
+
+Unit tests use [mocha](https://mochajs.org) and
+[chai](http://chaijs.com).
+
+We use [eslint](http://eslint.org), but styling is
+controlled mostly by
+[prettier](https://github.com/prettier/prettier/blob/master/README.md)
+which reformats your code before you commit. You can manually trigger a
+reformat using `npm run-script format`.
 
 ## Release History
 _(Nothing yet)_
