@@ -43,12 +43,14 @@
     "grunt-mocha-test": "^0.13.2",
     "load-grunt-tasks": "~3.5.0",
     "mocha": "^3.2.0",
+    "prettier": "^1.1.0",
     "request": "^2.79.0",
     "request-promise": "^4.1.1",
     "sinon": "^1.9.1",
     "time-grunt": "~1.4.0"
   },
   "scripts": {
+    "format": "prettier --write --trailing-comma es5 --print-width 120 --single-quote --tab-width 4 {test/lib}/*.js",
     "test": "grunt"
   }
 }
