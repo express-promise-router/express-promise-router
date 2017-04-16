@@ -49,6 +49,7 @@
     "time-grunt": "~1.4.0"
   },
   "scripts": {
+    "unit-tests": "mocha test/**/*.js",
     "test": "grunt"
   }
 }
