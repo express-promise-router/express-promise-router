@@ -51,6 +51,6 @@
   "scripts": {
     "lint": "eslint {lib,test}/**/*.js",
     "unit-tests": "mocha test/**/*.js",
-    "test": "grunt"
+    "test": "npm run-script lint && npm run-script unit-tests"
   }
 }
