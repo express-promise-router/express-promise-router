@@ -36,22 +36,19 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "eslint": "^3.19.0",
     "express": "4.x",
-    "grunt": "^1.0.1",
-    "grunt-cli": "^1.2.0",
-    "grunt-eslint": "^19.0.0",
-    "grunt-mocha-test": "^0.13.2",
-    "load-grunt-tasks": "~3.5.0",
     "mocha": "^3.2.0",
     "prettier": "^1.1.0",
     "request": "^2.79.0",
     "request-promise": "^4.1.1",
     "shared-git-hooks": "^1.2.1",
-    "sinon": "^1.9.1",
-    "time-grunt": "~1.4.0"
+    "sinon": "^1.9.1"
   },
   "scripts": {
     "format": "prettier --write --trailing-comma es5 --print-width 120 --single-quote --tab-width 4 {test/lib}/*.js",
-    "test": "grunt"
+    "lint": "eslint {lib,test}/**/*.js",
+    "unit-tests": "mocha test/**/*.js",
+    "test": "npm run-script lint && npm run-script unit-tests"
   }
 }
