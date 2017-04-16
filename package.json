@@ -46,6 +46,7 @@
     "prettier": "^1.1.0",
     "request": "^2.79.0",
     "request-promise": "^4.1.1",
+    "shared-git-hooks": "^1.2.1",
     "sinon": "^1.9.1",
     "time-grunt": "~1.4.0"
   },
