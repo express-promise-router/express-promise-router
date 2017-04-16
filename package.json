@@ -49,6 +49,7 @@
     "time-grunt": "~1.4.0"
   },
   "scripts": {
+    "lint": "eslint {lib,test}/**/*.js",
     "unit-tests": "mocha test/**/*.js",
     "test": "grunt"
   }
