@@ -71,7 +71,18 @@ which reformats your code before you commit. You can manually trigger a
 reformat using `npm run-script format`.
 
 ## Release History
-_(Nothing yet)_
+### v2.0
+* Dropped support for old Node versions (<4).
+  * Supported: Node 4 LTS, Node 6 LTS, Node current.
+* Use native promises instead of bluebird. (One less dependency!)
+* Use [`is-promise`](https://github.com/then/is-promise) module instead of our own function.
+### v1.1.1
+* Update to [`lodash`](https://lodash.com) 4
+* Update to [`bluebird`](http://bluebirdjs.com/) 3
+### v1.1.0
+* Improvements to error reporting
+* Support for route array
+* Bug fixes
 
 ## License
 Copyright (c) 2014 Alex Whitney. Licensed under the MIT license.
