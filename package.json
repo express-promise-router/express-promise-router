@@ -6,9 +6,13 @@
   "homepage": "https://github.com/alex-whitney/express-promise-router",
   "bugs": "https://github.com/alex-whitney/express-promise-router/issues",
   "author": {
+    "name": "Moritz Mahringer",
+    "email": "moritzmahringer@moritzmahringer.de"
+  },
+  "contributors": [{
     "name": "Alex Whitney",
     "email": "alex.whitney@gatech.edu"
-  },
+  }],
   "repository": {
     "type": "git",
     "url": "https://github.com/alex-whitney/express-promise-router"
