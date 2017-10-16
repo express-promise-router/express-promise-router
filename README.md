@@ -71,7 +71,7 @@ which reformats your code before you commit. You can manually trigger a
 reformat using `npm run-script format`.
 
 ## Release History
-### UNRELEASED
+### v3.0.0-rc.1
 * Update to `chai` 4
 * Update to `mocha` 4
 * Update to `eslint` 4
