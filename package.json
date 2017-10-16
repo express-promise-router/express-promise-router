@@ -34,7 +34,7 @@
   ],
   "dependencies": {
     "is-promise": "^2.1.0",
-    "lodash": "^4.13.1",
+    "lodash.flattendeep": "^4.0.0",
     "methods": "^1.0.0"
   },
   "peerDependencies": {
