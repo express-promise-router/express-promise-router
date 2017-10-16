@@ -71,6 +71,11 @@ which reformats your code before you commit. You can manually trigger a
 reformat using `npm run-script format`.
 
 ## Release History
+### UNRELEASED
+* Update to `chai` 4
+* Update to `mocha` 4
+* Update to `eslint` 4
+* Update to `sinon` 4 
 ### v2.0
 * Dropped support for old Node versions (<4).
   * Supported: Node 4 LTS, Node 6 LTS, Node current.

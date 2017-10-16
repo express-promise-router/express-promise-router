@@ -41,15 +41,15 @@
     "express": "4.x"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "eslint": "^3.19.0",
+    "chai": "^4.0.0",
+    "eslint": "^4.0.0",
     "express": "4.x",
-    "mocha": "^3.2.0",
+    "mocha": "^4.0.0",
     "prettier": "^1.1.0",
     "request": "^2.79.0",
     "request-promise": "^4.1.1",
     "shared-git-hooks": "^1.2.1",
-    "sinon": "^1.9.1"
+    "sinon": "^4.0.0"
   },
   "scripts": {
     "format": "prettier --write --trailing-comma es5 --print-width 120 --single-quote --tab-width 4 {test/lib}/*.js",
