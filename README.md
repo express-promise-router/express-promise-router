@@ -77,7 +77,7 @@ reformat using `npm run-script format`.
 * Update to `eslint` 4
 * Update to `sinon` 4 
 * Reduced lodash usage and footprint [#41](https://github.com/express-promise-router/express-promise-router/issues/41)
-### v2.0
+### v2.0.0
 * Dropped support for old Node versions (<4).
   * Supported: Node 4 LTS, Node 6 LTS, Node current.
 * Use native promises instead of bluebird. (One less dependency!)
