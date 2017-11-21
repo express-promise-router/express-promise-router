@@ -38,6 +38,7 @@
     "methods": "^1.0.0"
   },
   "peerDependencies": {
+    "@types/express": "^4.0.0",
     "express": "4.x"
   },
   "devDependencies": {
@@ -51,6 +52,7 @@
     "shared-git-hooks": "^1.2.1",
     "sinon": "^4.0.0"
   },
+  "types": "index.d.ts",
   "scripts": {
     "format": "prettier --write --trailing-comma es5 --print-width 120 --single-quote --tab-width 4 'lib/*.js' 'test/*.js'",
     "lint": "eslint {lib,test}/**/*.js",
