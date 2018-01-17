@@ -1,7 +1,7 @@
 declare module 'express-promise-router' {
-    import {Router, RouterOptions} from 'express'
+    import {Router as ExpressRouter, RouterOptions} from 'express'
 
-    function PromiseRouter(options?: RouterOptions): Router
+    function Router(options?: RouterOptions): ExpressRouter
 
-    export = PromiseRouter
+    export default Router
 }
