@@ -71,6 +71,10 @@ which reformats your code before you commit. You can manually trigger a
 reformat using `npm run-script format`.
 
 ## Release History
+### v3.0.1
+* Remove `@types/express` peerDependency
+    [#47](https://github.com/express-promise-router/express-promise-router/pull/47)
+    [#48](https://github.com/express-promise-router/express-promise-router/pull/48)
 ### v3.0.0
 * Update to `chai` 4
 * Update to `mocha` 4
