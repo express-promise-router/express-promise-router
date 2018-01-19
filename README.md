@@ -71,12 +71,13 @@ which reformats your code before you commit. You can manually trigger a
 reformat using `npm run-script format`.
 
 ## Release History
-### v3.0.0-rc.1
+### v3.0.0
 * Update to `chai` 4
 * Update to `mocha` 4
 * Update to `eslint` 4
 * Update to `sinon` 4 
 * Reduced lodash usage and footprint [#41](https://github.com/express-promise-router/express-promise-router/issues/41)
+* Added TypeScript definitions [#47](https://github.com/express-promise-router/express-promise-router/pull/47)
 ### v2.0.0
 * Dropped support for old Node versions (<4).
   * Supported: Node 4 LTS, Node 6 LTS, Node current.
