@@ -4,17 +4,8 @@ var tt = require('typescript-definition-tester');
 var path = require('path');
 var resolve = require('path').resolve;
 var assert = require('chai').assert;
-var request = require('request-promise');
 var spawnTypeScript = require('./util/launch-utils').spawnTypeScript;
-
-var GET = function(route) {
-    return request({ url: 'http://localhost:12345' + route, resolveWithFullResponse: true }).then(function(res) {
-        // Express sends 500 errors for uncaught exceptions (like failed assertions)
-        // Make sure to still fail the test if an assertion in middleware failed.
-        assert.equal(res.statusCode, 200);
-        return res;
-    });
-};
+var GET = require('./util/http-utils').GET;
 
 describe('TypeScript', function() {
     it('should compile base-case successfully against index.d.ts', function(done) {
