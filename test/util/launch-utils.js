@@ -21,3 +21,9 @@ exports.spawnTypeScript = function spawnTypeScript(path) {
 
     return spawnString(transpiled, dirname(path));
 };
+
+exports.spawnJavaScript = function spawnJavaScript(path) {
+    var content = fs.readFileSync(path, 'utf-8');
+
+    return spawnString(content, dirname(path));
+};
