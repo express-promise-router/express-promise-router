@@ -58,7 +58,7 @@
   "scripts": {
     "format": "prettier --write --trailing-comma es5 --print-width 120 --single-quote --tab-width 4 'lib/*.js' 'test/*.js'",
     "lint": "eslint {lib,test}/**/*.js",
-    "unit-tests": "mocha test/**/*.js",
+    "unit-tests": "mocha test/*.test.js",
     "test": "npm run-script lint && npm run-script unit-tests"
   }
 }
