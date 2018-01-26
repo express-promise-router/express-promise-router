@@ -10,7 +10,7 @@ function spawnString(source, dir) {
 }
 
 // path has to be fully qualified
-exports.spawnTranspiledModule = function spawnTranspiledModule(path) {
+exports.spawnTypeScript = function spawnTypeScript(path) {
     var content = fs.readFileSync(path, 'utf-8');
 
     var compilerOptions = {

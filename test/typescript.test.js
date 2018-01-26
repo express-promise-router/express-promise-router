@@ -5,7 +5,7 @@ var path = require('path');
 var resolve = require('path').resolve;
 var assert = require('chai').assert;
 var request = require('request-promise');
-var spawnTranspiledModule = require('./util/launch-utils').spawnTranspiledModule;
+var spawnTypeScript = require('./util/launch-utils').spawnTypeScript;
 
 var GET = function(route) {
     return request({ url: 'http://localhost:12345' + route, resolveWithFullResponse: true }).then(function(res) {
@@ -25,7 +25,7 @@ describe('TypeScript', function() {
     it('should run the example and respond', function(done) {
         this.timeout(5000);
         var ts_file = resolve(__dirname, './test-resources/typescript-base-case.ts');
-        var target = spawnTranspiledModule(ts_file);
+        var target = spawnTypeScript(ts_file);
         var called = false;
 
         target.stdout.on('data', function(data) {
