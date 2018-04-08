@@ -1,4 +1,5 @@
 var ts = require('typescript');
+var babel = require('babel-core');
 var fs = require('fs');
 var spawn = require('child_process').spawn;
 var dirname = require('path').dirname;
@@ -26,4 +27,14 @@ exports.spawnJavaScript = function spawnJavaScript(path) {
     var content = fs.readFileSync(path, 'utf-8');
 
     return spawnString(content, dirname(path));
+};
+
+exports.spawnBabel = function spawnBabel(path) {
+    var content = fs.readFileSync(path, 'utf-8');
+
+    var result = babel.transform(content, {
+        plugins: ['transform-es2015-modules-commonjs'],
+    });
+
+    return spawnString(result.code, dirname(path));
 };
