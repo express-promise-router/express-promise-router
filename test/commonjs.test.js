@@ -1,22 +1,15 @@
 'use strict';
 
-var tt = require('typescript-definition-tester');
-var path = require('path');
 var resolve = require('path').resolve;
 var assert = require('chai').assert;
-var spawnTypeScript = require('./util/launch-utils').spawnTypeScript;
+var spawnJavaScript = require('./util/launch-utils').spawnJavaScript;
 var GET = require('./util/http-utils').GET;
 
-describe('TypeScript', function() {
-    it('should compile base-case successfully against index.d.ts', function(done) {
-        this.timeout(20000);
-        tt.compile([path.resolve(__dirname + '/typescript-resources/typescript-base-case.ts')], {}, done.bind(null));
-    });
-
+describe('CommonJs', function() {
     it('should run the example and respond', function(done) {
         this.timeout(5000);
-        var ts_file = resolve(__dirname, './test-resources/typescript-base-case.ts');
-        var target = spawnTypeScript(ts_file);
+        var js_file = resolve(__dirname, './test-resources/commonjs-base-case.js');
+        var target = spawnJavaScript(js_file);
         var called = false;
 
         target.stdout.on('data', function(data) {
