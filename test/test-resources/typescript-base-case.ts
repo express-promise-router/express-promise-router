@@ -1,6 +1,6 @@
 /// <reference path="../../index.d.ts"/>
-import * as express from 'express';
-import Router from '../../lib/express-promise-router.js';
+import express = require('express');
+import Router = require('../../lib/express-promise-router.js');
 const router = Router();
 
 router.get('/', function(req, res) {
