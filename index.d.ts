@@ -3,5 +3,5 @@ declare module 'express-promise-router' {
 
     function PromiseRouter(options?: RouterOptions): Router;
 
-    export default PromiseRouter;
+    export = PromiseRouter;
 }
