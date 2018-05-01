@@ -56,6 +56,22 @@ router.use('/url', function (req, res, next) {
 });
 ```
 
+Finally, you can install this router as the top-level router on the app object. All the `app`
+calls are transparently wrapped. The caveat is that creating additional routers should still
+use this package explicitly, instead of `express.Router()`.
+
+```javascript
+var PromiseRouter = require('express-promise-router');
+var app = express();
+PromiseRouter.wrapApp(app);
+
+app.use('/url', function (req, res) {
+    return Promise.reject();
+})
+
+var router = PromiseRouter()
+app.use('/path', router)
+```
 
 ## Contributing
 Add unit tests for any new or changed functionality.
