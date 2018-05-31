@@ -38,7 +38,7 @@
     "methods": "^1.0.0"
   },
   "peerDependencies": {
-    "express": "4.x"
+    "express": "^4.0.0"
   },
   "devDependencies": {
     "@types/express": "^4.11.0",
