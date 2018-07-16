@@ -71,6 +71,9 @@ which reformats your code before you commit. You can manually trigger a
 reformat using `npm run-script format`.
 
 ## Release History
+### v3.0.3
+* Improve package dependencies
+    [#57](https://github.com/express-promise-router/express-promise-router/issues/57)
 ### v3.0.2
 * Add `default` property to simulate es6 style default export
     [#50](https://github.com/express-promise-router/express-promise-router/issues/50)
