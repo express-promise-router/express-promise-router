@@ -1,7 +1,7 @@
 # express-promise-router
 
 [![npm version](https://badge.fury.io/js/express-promise-router.svg)](https://badge.fury.io/js/express-promise-router)
-[![Build Status](https://travis-ci.org/mormahr/express-promise-router.svg?branch=master)](https://travis-ci.org/mormahr/express-promise-router)
+[![Build Status](https://travis-ci.org/express-promise-router/express-promise-router.svg?branch=master)](https://travis-ci.org/express-promise-router/express-promise-router)
 
 A simple wrapper for Express 4's Router that allows middleware to return promises. This package makes it simpler to
 write route handlers for Express when dealing with promises by reducing duplicate code.
@@ -86,7 +86,7 @@ reformat using `npm run-script format`.
 * Update to `chai` 4
 * Update to `mocha` 4
 * Update to `eslint` 4
-* Update to `sinon` 4 
+* Update to `sinon` 4
 * Reduced lodash usage and footprint [#41](https://github.com/express-promise-router/express-promise-router/issues/41)
 * Added TypeScript definitions [#47](https://github.com/express-promise-router/express-promise-router/pull/47)
 ### v2.0.0
