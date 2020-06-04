@@ -34,14 +34,14 @@ handler.
 // With Express 4's router
 var router = require("express").Router();
 
-router.use("/url", function(req, res, next) {
+router.use("/url", function (req, res, next) {
     Promise.reject().catch(next);
 });
 
 // With express-promise-router
 var router = require("express-promise-router")();
 
-router.use("/url", function(req, res) {
+router.use("/url", function (req, res) {
     return Promise.reject();
 });
 ```
@@ -49,12 +49,12 @@ router.use("/url", function(req, res) {
 Calling `next()` and `next("route")` is supported by resolving a promise with either `"next"` or `"route"`. No action is taken if the promise is resolved with any other value.
 
 ```javascript
-router.use("/url", function(req, res) {
+router.use("/url", function (req, res) {
     // equivalent to calling next()
     return Promise.resolve("next");
 });
 
-router.use("/url", function(req, res) {
+router.use("/url", function (req, res) {
     // equivalent to calling next('route')
     return Promise.resolve("route");
 });
@@ -66,7 +66,7 @@ This package still allows calling `next` directly.
 router = require("express-promise-router")();
 
 // still works as expected
-router.use("/url", function(req, res, next) {
+router.use("/url", function (req, res, next) {
     next();
 });
 ```
@@ -117,12 +117,12 @@ valid. You should always specify a path like this:
 
 ```javascript
 // DO:
-router.get("/", function(req, res) {
+router.get("/", function (req, res) {
     res.send("Test");
 });
 
 // DON'T:
-router.get(function(req, res) {
+router.get(function (req, res) {
     res.send("Test");
 });
 ```
@@ -143,7 +143,7 @@ const app = express();
 const router = Router();
 app.use(router);
 
-router.get("/", function(req, res) {
+router.get("/", function (req, res) {
     res.send("Test");
 });
 ```

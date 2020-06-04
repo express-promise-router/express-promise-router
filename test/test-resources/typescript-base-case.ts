@@ -3,7 +3,7 @@ import * as express from "express";
 import Router from "../../lib/express-promise-router.js";
 const router = Router();
 
-router.get("/", function(req, res) {
+router.get("/", function (req, res) {
     res.send("Hi!");
 });
 

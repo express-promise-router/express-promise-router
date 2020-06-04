@@ -7,8 +7,8 @@ var assert = require("chai").assert;
 var spawnTypeScript = require("./util/launch-utils").spawnTypeScript;
 var GET = require("./util/http-utils").GET;
 
-describe("TypeScript", function() {
-    it("should compile base-case successfully against index.d.ts", function(done) {
+describe("TypeScript", function () {
+    it("should compile base-case successfully against index.d.ts", function (done) {
         this.timeout(20000);
         tt.compile(
             [
@@ -21,7 +21,7 @@ describe("TypeScript", function() {
         );
     });
 
-    it("should run the example and respond", function(done) {
+    it("should run the example and respond", function (done) {
         this.timeout(5000);
         var ts_file = resolve(
             __dirname,
@@ -30,22 +30,22 @@ describe("TypeScript", function() {
         var target = spawnTypeScript(ts_file);
         var called = false;
 
-        target.stdout.on("data", function(data) {
+        target.stdout.on("data", function (data) {
             if (data.toString().indexOf("START") === -1) {
                 return;
             }
 
-            GET("/").then(function() {
+            GET("/").then(function () {
                 called = true;
                 target.kill("SIGINT");
             });
         });
 
-        target.stderr.on("data", function(data) {
+        target.stderr.on("data", function (data) {
             console.error(data.toString());
         });
 
-        target.on("close", function() {
+        target.on("close", function () {
             assert(called);
             done();
         });
