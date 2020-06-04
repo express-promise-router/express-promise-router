@@ -175,6 +175,7 @@ reformat using `npm run-script format`.
 ### Unreleased
 
 -   Drop old node versions
+    [#68](https://github.com/express-promise-router/express-promise-router/pull/68)
 
 ### v3.0.3
 
