@@ -2461,11 +2461,6 @@ setprototypeof@1.1.1:
   resolved "https://registry.yarnpkg.com/setprototypeof/-/setprototypeof-1.1.1.tgz#7e95acb24aa92f5885e0abef5ba131330d4ae683"
   integrity sha512-JvdAWfbXeIGaZ9cILp38HntZSFSo3mWg6xGcJJsd+d4aRMOqauag1C63dJfDw7OaMYwEbHMOxEZ1lqVRYP2OAw==
 
-shared-git-hooks@1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/shared-git-hooks/-/shared-git-hooks-1.2.1.tgz#f17f59677cbf8fc3ee8ee71934a9de70a0920cce"
-  integrity sha1-8X9ZZ3y/j8PujucZNKnecKCSDM4=
-
 shebang-command@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/shebang-command/-/shebang-command-2.0.0.tgz#ccd0af4f8835fbdc265b82461aaf0c36663f34ea"
