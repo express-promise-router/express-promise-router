@@ -45,7 +45,7 @@
     "babel-core": "6.26.3",
     "babel-plugin-transform-es2015-modules-commonjs": "6.26.2",
     "chai": "4.2.0",
-    "eslint": "4.19.1",
+    "eslint": "7.1.0",
     "express": "4.17.1",
     "mocha": "4.1.0",
     "prettier": "1.17.1",
