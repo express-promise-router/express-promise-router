@@ -1,0 +1,13 @@
+{
+  "env": {
+    "node": true
+  },
+  "extends": ["eslint:recommended", "prettier"],
+  "globals": {
+    "Promise": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2017,
+    "sourceType": "script"
+  }
+}

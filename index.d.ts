@@ -1,5 +1,5 @@
-declare module 'express-promise-router' {
-    import { Router, RouterOptions } from 'express';
+declare module "express-promise-router" {
+    import { Router, RouterOptions } from "express";
 
     function PromiseRouter(options?: RouterOptions): Router;
 

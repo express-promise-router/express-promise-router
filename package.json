@@ -33,7 +33,7 @@
     "router"
   ],
   "dependencies": {
-    "is-promise": "^2.1.0",
+    "is-promise": "^4.0.0",
     "lodash.flattendeep": "^4.0.0",
     "methods": "^1.0.0"
   },
@@ -42,26 +42,37 @@
   },
   "devDependencies": {
     "@changesets/cli": "2.8.0",
-    "@types/express": "^4.11.0",
-    "babel-core": "^6.26.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
-    "chai": "^4.0.0",
-    "eslint": "^4.0.0",
-    "express": "4.x",
-    "mocha": "^4.0.0",
-    "prettier": "^1.1.0",
-    "request": "^2.79.0",
-    "request-promise": "^4.1.1",
-    "shared-git-hooks": "^1.2.1",
-    "sinon": "^4.0.0",
-    "typescript": "^2.6.2",
-    "typescript-definition-tester": "0.0.5"
+    "@types/express": "4.16.1",
+    "babel-core": "6.26.3",
+    "babel-plugin-transform-es2015-modules-commonjs": "6.26.2",
+    "chai": "4.2.0",
+    "eslint": "7.1.0",
+    "eslint-config-prettier": "6.11.0",
+    "express": "4.17.1",
+    "husky": "4.2.5",
+    "lint-staged": "10.2.8",
+    "mocha": "7.2.0",
+    "prettier": "2.0.5",
+    "request": "2.88.2",
+    "request-promise": "4.2.5",
+    "shared-git-hooks": "1.2.1",
+    "sinon": "9.0.2",
+    "typescript": "3.9.3",
+    "typescript-definition-tester": "0.0.6"
   },
   "types": "index.d.ts",
   "scripts": {
-    "format": "prettier --write --trailing-comma es5 --print-width 120 --single-quote --tab-width 4 'lib/**/*.js' 'test/**/*.js' 'index.d.ts' 'test/**/*.ts'",
     "lint": "eslint {lib,test}/**/*.js",
     "unit-tests": "mocha test/*.test.js",
     "test": "npm run-script lint && npm run-script unit-tests"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js,ts,yml,yaml,json,json5,css,md,.eslintrc}": "prettier --write"
   }
 }

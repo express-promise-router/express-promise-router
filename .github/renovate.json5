@@ -10,4 +10,5 @@
             automerge: true,
         },
     ],
+    prHourlyLimit: 10,
 }
