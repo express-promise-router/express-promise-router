@@ -33,7 +33,7 @@
     "router"
   ],
   "dependencies": {
-    "is-promise": "^2.1.0",
+    "is-promise": "^4.0.0",
     "lodash.flattendeep": "^4.0.0",
     "methods": "^1.0.0"
   },
