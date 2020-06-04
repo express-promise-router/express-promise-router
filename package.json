@@ -47,6 +47,8 @@
     "chai": "4.2.0",
     "eslint": "4.19.1",
     "express": "4.17.1",
+    "husky": "4.2.5",
+    "lint-staged": "10.2.8",
     "mocha": "4.1.0",
     "prettier": "1.17.1",
     "request": "2.88.0",
@@ -61,5 +63,14 @@
     "lint": "eslint {lib,test}/**/*.js",
     "unit-tests": "mocha test/*.test.js",
     "test": "npm run-script lint && npm run-script unit-tests"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js,ts,yml,yaml,json,json5,css,md}": "prettier --write"
   }
 }
