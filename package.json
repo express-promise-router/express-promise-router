@@ -20,7 +20,7 @@
     "url": "https://github.com/alex-whitney/express-promise-router"
   },
   "engines": {
-    "node": ">=4"
+    "node": ">=10"
   },
   "licenses": [
     {
