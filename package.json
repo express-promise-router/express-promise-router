@@ -43,7 +43,7 @@
   "devDependencies": {
     "@changesets/cli": "2.8.0",
     "@mormahr/typescript-definition-tester": "1.0.0",
-    "@types/express": "4.16.1",
+    "@types/express": "4.17.6",
     "babel-core": "6.26.3",
     "babel-plugin-transform-es2015-modules-commonjs": "6.26.2",
     "chai": "4.2.0",
