@@ -56,7 +56,7 @@
     "request-promise": "4.2.5",
     "shared-git-hooks": "1.2.1",
     "sinon": "4.5.0",
-    "typescript": "2.9.2",
+    "typescript": "3.9.3",
     "typescript-definition-tester": "0.0.6"
   },
   "types": "index.d.ts",
