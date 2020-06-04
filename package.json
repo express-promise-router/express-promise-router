@@ -58,7 +58,7 @@
   },
   "types": "index.d.ts",
   "scripts": {
-    "format": "prettier --write --trailing-comma es5 --print-width 120 --single-quote --tab-width 4 'lib/**/*.js' 'test/**/*.js' 'index.d.ts' 'test/**/*.ts'",
+    "format": "prettier --write 'lib/**/*.js' 'test/**/*.js' 'index.d.ts' 'test/**/*.ts'",
     "lint": "eslint {lib,test}/**/*.js",
     "unit-tests": "mocha test/*.test.js",
     "test": "npm run-script lint && npm run-script unit-tests"
