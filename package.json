@@ -52,7 +52,7 @@
     "express": "4.17.1",
     "husky": "4.2.5",
     "lint-staged": "10.2.9",
-    "mocha": "8.0.0",
+    "mocha": "8.0.1",
     "prettier": "2.0.5",
     "request": "2.88.2",
     "request-promise": "4.2.5",
