@@ -173,52 +173,7 @@ reformat using `npm run-script format`.
 
 ### Unreleased
 
-- Drop old node versions
-  [#68](https://github.com/express-promise-router/express-promise-router/pull/68)
-
-### v3.0.3
-
-- Improve package dependencies
-  [#57](https://github.com/express-promise-router/express-promise-router/issues/57)
-
-### v3.0.2
-
-- Add `default` property to simulate es6 style default export
-  [#50](https://github.com/express-promise-router/express-promise-router/issues/50)
-  [#51](https://github.com/express-promise-router/express-promise-router/pull/51)
-
-### v3.0.1
-
-- Remove `@types/express` peerDependency
-  [#47](https://github.com/express-promise-router/express-promise-router/pull/47)
-  [#48](https://github.com/express-promise-router/express-promise-router/pull/48)
-
-### v3.0.0
-
-- Update to `chai` 4
-- Update to `mocha` 4
-- Update to `eslint` 4
-- Update to `sinon` 4
-- Reduced lodash usage and footprint [#41](https://github.com/express-promise-router/express-promise-router/issues/41)
-- Added TypeScript definitions [#47](https://github.com/express-promise-router/express-promise-router/pull/47)
-
-### v2.0.0
-
-- Dropped support for old Node versions (<4).
-  - Supported: Node 4 LTS, Node 6 LTS, Node current.
-- Use native promises instead of bluebird. (One less dependency!)
-- Use [`is-promise`](https://github.com/then/is-promise) module instead of our own function.
-
-### v1.1.1
-
-- Update to [`lodash`](https://lodash.com) 4
-- Update to [`bluebird`](http://bluebirdjs.com/) 3
-
-### v1.1.0
-
-- Improvements to error reporting
-- Support for route array
-- Bug fixes
+See [CHANGELOG](https://github.com/express-promise-router/express-promise-router/blob/trunk/CHANGELOG.md)
 
 ## Attribution
 
