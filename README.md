@@ -1,7 +1,7 @@
 # express-promise-router
 
 [![npm version](https://badge.fury.io/js/express-promise-router.svg)](https://badge.fury.io/js/express-promise-router)
-[![Build Status](https://travis-ci.org/express-promise-router/express-promise-router.svg?branch=master)](https://travis-ci.org/express-promise-router/express-promise-router)
+[![Build Status](https://travis-ci.org/express-promise-router/express-promise-router.svg?branch=trunk)](https://travis-ci.org/express-promise-router/express-promise-router)
 
 A simple wrapper for Express 4's Router that allows middleware to return promises.
 This package makes it simpler to write route handlers for Express when dealing
@@ -35,14 +35,14 @@ handler.
 var router = require("express").Router();
 
 router.use("/url", function (req, res, next) {
-    Promise.reject().catch(next);
+  Promise.reject().catch(next);
 });
 
 // With express-promise-router
 var router = require("express-promise-router")();
 
 router.use("/url", function (req, res) {
-    return Promise.reject();
+  return Promise.reject();
 });
 ```
 
@@ -50,13 +50,13 @@ Calling `next()` and `next("route")` is supported by resolving a promise with ei
 
 ```javascript
 router.use("/url", function (req, res) {
-    // equivalent to calling next()
-    return Promise.resolve("next");
+  // equivalent to calling next()
+  return Promise.resolve("next");
 });
 
 router.use("/url", function (req, res) {
-    // equivalent to calling next('route')
-    return Promise.resolve("route");
+  // equivalent to calling next('route')
+  return Promise.resolve("route");
 });
 ```
 
@@ -67,7 +67,7 @@ router = require("express-promise-router")();
 
 // still works as expected
 router.use("/url", function (req, res, next) {
-    next();
+  next();
 });
 ```
 
@@ -103,7 +103,7 @@ Just like with regular `express.Router` you can define custom error handlers.
 
 ```javascript
 router.use((err, req, res, next) => {
-    res.status(403).send(err.message);
+  res.status(403).send(err.message);
 });
 ```
 
@@ -118,12 +118,12 @@ valid. You should always specify a path like this:
 ```javascript
 // DO:
 router.get("/", function (req, res) {
-    res.send("Test");
+  res.send("Test");
 });
 
 // DON'T:
 router.get(function (req, res) {
-    res.send("Test");
+  res.send("Test");
 });
 ```
 
@@ -144,7 +144,7 @@ const router = Router();
 app.use(router);
 
 router.get("/", function (req, res) {
-    res.send("Test");
+  res.send("Test");
 });
 ```
 
@@ -174,52 +174,52 @@ reformat using `npm run-script format`.
 
 ### Unreleased
 
--   Drop old node versions
-    [#68](https://github.com/express-promise-router/express-promise-router/pull/68)
+- Drop old node versions
+  [#68](https://github.com/express-promise-router/express-promise-router/pull/68)
 
 ### v3.0.3
 
--   Improve package dependencies
-    [#57](https://github.com/express-promise-router/express-promise-router/issues/57)
+- Improve package dependencies
+  [#57](https://github.com/express-promise-router/express-promise-router/issues/57)
 
 ### v3.0.2
 
--   Add `default` property to simulate es6 style default export
-    [#50](https://github.com/express-promise-router/express-promise-router/issues/50)
-    [#51](https://github.com/express-promise-router/express-promise-router/pull/51)
+- Add `default` property to simulate es6 style default export
+  [#50](https://github.com/express-promise-router/express-promise-router/issues/50)
+  [#51](https://github.com/express-promise-router/express-promise-router/pull/51)
 
 ### v3.0.1
 
--   Remove `@types/express` peerDependency
-    [#47](https://github.com/express-promise-router/express-promise-router/pull/47)
-    [#48](https://github.com/express-promise-router/express-promise-router/pull/48)
+- Remove `@types/express` peerDependency
+  [#47](https://github.com/express-promise-router/express-promise-router/pull/47)
+  [#48](https://github.com/express-promise-router/express-promise-router/pull/48)
 
 ### v3.0.0
 
--   Update to `chai` 4
--   Update to `mocha` 4
--   Update to `eslint` 4
--   Update to `sinon` 4
--   Reduced lodash usage and footprint [#41](https://github.com/express-promise-router/express-promise-router/issues/41)
--   Added TypeScript definitions [#47](https://github.com/express-promise-router/express-promise-router/pull/47)
+- Update to `chai` 4
+- Update to `mocha` 4
+- Update to `eslint` 4
+- Update to `sinon` 4
+- Reduced lodash usage and footprint [#41](https://github.com/express-promise-router/express-promise-router/issues/41)
+- Added TypeScript definitions [#47](https://github.com/express-promise-router/express-promise-router/pull/47)
 
 ### v2.0.0
 
--   Dropped support for old Node versions (<4).
-    -   Supported: Node 4 LTS, Node 6 LTS, Node current.
--   Use native promises instead of bluebird. (One less dependency!)
--   Use [`is-promise`](https://github.com/then/is-promise) module instead of our own function.
+- Dropped support for old Node versions (<4).
+  - Supported: Node 4 LTS, Node 6 LTS, Node current.
+- Use native promises instead of bluebird. (One less dependency!)
+- Use [`is-promise`](https://github.com/then/is-promise) module instead of our own function.
 
 ### v1.1.1
 
--   Update to [`lodash`](https://lodash.com) 4
--   Update to [`bluebird`](http://bluebirdjs.com/) 3
+- Update to [`lodash`](https://lodash.com) 4
+- Update to [`bluebird`](http://bluebirdjs.com/) 3
 
 ### v1.1.0
 
--   Improvements to error reporting
--   Support for route array
--   Bug fixes
+- Improvements to error reporting
+- Support for route array
+- Bug fixes
 
 ## Attribution
 
