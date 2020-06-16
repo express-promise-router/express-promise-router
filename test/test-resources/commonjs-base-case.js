@@ -3,7 +3,7 @@ var Router = require("../../lib/express-promise-router.js");
 var router = Router();
 
 router.get("/", function (req, res) {
-    res.send("Hi!");
+  res.send("Hi!");
 });
 
 var app = express();

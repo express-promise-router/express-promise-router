@@ -5,36 +5,36 @@ var spawn = require("child_process").spawn;
 var dirname = require("path").dirname;
 
 function spawnString(source, dir) {
-    return spawn("node", ["-e", source], {
-        cwd: dir,
-    });
+  return spawn("node", ["-e", source], {
+    cwd: dir,
+  });
 }
 
 // path has to be fully qualified
 exports.spawnTypeScript = function spawnTypeScript(path) {
-    var content = fs.readFileSync(path, "utf-8");
+  var content = fs.readFileSync(path, "utf-8");
 
-    var compilerOptions = {
-        module: ts.ModuleKind.CommonJS,
-    };
+  var compilerOptions = {
+    module: ts.ModuleKind.CommonJS,
+  };
 
-    var transpiled = ts.transpile(content, compilerOptions);
+  var transpiled = ts.transpile(content, compilerOptions);
 
-    return spawnString(transpiled, dirname(path));
+  return spawnString(transpiled, dirname(path));
 };
 
 exports.spawnJavaScript = function spawnJavaScript(path) {
-    var content = fs.readFileSync(path, "utf-8");
+  var content = fs.readFileSync(path, "utf-8");
 
-    return spawnString(content, dirname(path));
+  return spawnString(content, dirname(path));
 };
 
 exports.spawnBabel = function spawnBabel(path) {
-    var content = fs.readFileSync(path, "utf-8");
+  var content = fs.readFileSync(path, "utf-8");
 
-    var result = babel.transform(content, {
-        plugins: ["transform-es2015-modules-commonjs"],
-    });
+  var result = babel.transform(content, {
+    plugins: ["transform-es2015-modules-commonjs"],
+  });
 
-    return spawnString(result.code, dirname(path));
+  return spawnString(result.code, dirname(path));
 };
