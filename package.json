@@ -3,8 +3,8 @@
   "version": "4.0.0",
   "main": "lib/express-promise-router.js",
   "description": "A lightweight wrapper for Express 4's Router that allows middleware to return promises",
-  "homepage": "https://github.com/alex-whitney/express-promise-router",
-  "bugs": "https://github.com/alex-whitney/express-promise-router/issues",
+  "homepage": "https://github.com/express-promise-router/express-promise-router",
+  "bugs": "https://github.com/express-promise-router/express-promise-router/issues",
   "author": {
     "name": "Moritz Mahringer",
     "email": "moritzmahringer@moritzmahringer.de"
@@ -17,7 +17,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/alex-whitney/express-promise-router"
+    "url": "https://github.com/express-promise-router/express-promise-router"
   },
   "engines": {
     "node": ">=10"
