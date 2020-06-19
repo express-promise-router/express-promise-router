@@ -171,8 +171,6 @@ reformat using `npm run-script format`.
 
 ## Release History
 
-### Unreleased
-
 See [CHANGELOG](https://github.com/express-promise-router/express-promise-router/blob/trunk/CHANGELOG.md)
 
 ## Attribution
