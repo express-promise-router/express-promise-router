@@ -1,5 +1,13 @@
 # express-promise-router
 
+## 4.0.1
+
+### Patch Changes
+
+- 04a9dc3: Fix TypeScript dependencies for yarn v2 users, by including @types/express as an optional dependency.
+  [#66](https://github.com/express-promise-router/express-promise-router/issues/66)
+  [#96](https://github.com/express-promise-router/express-promise-router/pull/96)
+
 ## 4.0.0
 
 ### Breaking Changes
