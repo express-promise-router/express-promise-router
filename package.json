@@ -32,6 +32,9 @@
     "promise",
     "router"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "is-promise": "^4.0.0",
     "lodash.flattendeep": "^4.0.0",
