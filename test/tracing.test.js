@@ -25,4 +25,12 @@ describe("function name", function () {
     assert.equal(router.stack[0].handle.name, "actualErrorHandler");
     assert.equal(router.stack[0].name, "actualErrorHandler");
   });
+
+  it("empty name for anonymous middleware handler", function () {
+    const router = Router();
+    router.use((req, res, next) => {});
+
+    assert.equal(router.stack[0].handle.name, "");
+    assert.equal(router.stack[0].name, "<anonymous>");
+  });
 });
