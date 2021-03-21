@@ -1,5 +1,11 @@
 # express-promise-router
 
+## 4.1.0
+
+### Minor Changes
+
+- c2f70e2: The handler function now uses the name of the original (wrapped) handler as its name to aid in debugging and tracing.
+
 ## 4.0.1
 
 ### Patch Changes
