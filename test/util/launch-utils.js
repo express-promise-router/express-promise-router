@@ -11,12 +11,8 @@ function spawnString(source, dir) {
 }
 
 // path has to be fully qualified
-exports.spawnTypeScript = function spawnTypeScript(path) {
+exports.spawnTypeScript = function spawnTypeScript(path, compilerOptions) {
   var content = fs.readFileSync(path, "utf-8");
-
-  var compilerOptions = {
-    module: ts.ModuleKind.CommonJS,
-  };
 
   var transpiled = ts.transpile(content, compilerOptions);
 

@@ -1,9 +1,14 @@
-/// <reference path="../../index.d.ts"/>
-import * as express from "express";
 import Router from "../../lib/express-promise-router.js";
+import express from "express";
+
 const router = Router();
 
-router.get("/", function (req, res) {
+function wait(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+router.get("/", async function (_req, res) {
+  await wait(10);
   res.send("Hi!");
 });
 
