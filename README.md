@@ -85,7 +85,7 @@ const router = Router();
 Using `async` / `await` can dramatically improve code readability.
 
 ```javascript
-router.get('/url', async (req, res) {
+router.get('/url', async (req, res) => {
     const user = await User.fetch(req.user.id);
 
     if (user.permission !== "ADMIN") {
