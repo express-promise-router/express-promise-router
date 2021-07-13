@@ -60,7 +60,7 @@
     "eslint-config-prettier": "8.3.0",
     "express": "4.17.1",
     "husky": "6.0.0",
-    "lint-staged": "11.0.0",
+    "lint-staged": "11.0.1",
     "mocha": "8.4.0",
     "prettier": "2.3.2",
     "request": "2.88.2",
