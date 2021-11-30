@@ -1,5 +1,11 @@
 # express-promise-router
 
+## 4.1.1
+
+### Patch Changes
+
+- f72e317: Router handler functions now include all additional properties to aid discoverability of registered routes.
+
 ## 4.1.0
 
 ### Minor Changes
