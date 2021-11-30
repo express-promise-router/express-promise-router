@@ -20,7 +20,7 @@
     "url": "https://github.com/express-promise-router/express-promise-router"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=12"
   },
   "licenses": [
     {
