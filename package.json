@@ -50,7 +50,7 @@
     }
   },
   "devDependencies": {
-    "@babel/core": "7.22.8",
+    "@babel/core": "7.22.9",
     "@babel/plugin-transform-modules-commonjs": "7.22.5",
     "@changesets/cli": "2.26.2",
     "@mormahr/typescript-definition-tester": "1.1.0",
