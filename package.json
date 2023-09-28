@@ -55,7 +55,7 @@
     "@changesets/cli": "2.26.2",
     "@mormahr/typescript-definition-tester": "1.1.0",
     "@types/express": "4.17.18",
-    "chai": "4.3.9",
+    "chai": "4.3.10",
     "eslint": "8.50.0",
     "eslint-config-prettier": "9.0.0",
     "express": "4.18.2",
