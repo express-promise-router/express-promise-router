@@ -63,7 +63,7 @@
     "husky": "8.0.3",
     "lint-staged": "13.2.3",
     "mocha": "10.2.0",
-    "prettier": "3.2.4",
+    "prettier": "3.2.5",
     "request": "2.88.2",
     "request-promise": "4.2.6",
     "sinon": "17.0.1",
