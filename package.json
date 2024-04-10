@@ -67,7 +67,7 @@
     "request": "2.88.2",
     "request-promise": "4.2.6",
     "sinon": "17.0.1",
-    "typescript": "5.4.4"
+    "typescript": "5.4.5"
   },
   "types": "index.d.ts",
   "scripts": {
