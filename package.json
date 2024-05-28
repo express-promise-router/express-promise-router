@@ -52,7 +52,7 @@
   "devDependencies": {
     "@babel/core": "7.24.6",
     "@babel/plugin-transform-modules-commonjs": "7.24.6",
-    "@changesets/cli": "2.27.3",
+    "@changesets/cli": "2.27.4",
     "@mormahr/typescript-definition-tester": "1.1.0",
     "@types/express": "4.17.21",
     "chai": "4.4.1",
