@@ -62,7 +62,7 @@
     "express-list-endpoints": "6.0.0",
     "husky": "8.0.3",
     "lint-staged": "13.2.3",
-    "mocha": "10.7.0",
+    "mocha": "10.7.3",
     "prettier": "3.3.3",
     "request": "2.88.2",
     "request-promise": "4.2.6",
