@@ -1,5 +1,12 @@
 # express-promise-router
 
+## 4.1.2
+
+### Patch Changes
+
+- Bump express from 4.21.0 to 4.21.2 to address a security vulnerability
+  [#57](https://github.com/express-promise-router/express-promise-router/issues/5656)
+
 ## 4.1.1
 
 ### Patch Changes
