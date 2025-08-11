@@ -57,7 +57,7 @@
     "@types/express": "4.17.23",
     "chai": "4.5.0",
     "eslint": "8.57.1",
-    "eslint-config-prettier": "10.1.5",
+    "eslint-config-prettier": "10.1.8",
     "express": "4.21.2",
     "express-list-endpoints": "6.0.0",
     "husky": "8.0.3",
