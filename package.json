@@ -59,7 +59,7 @@
     "eslint": "8.57.1",
     "eslint-config-prettier": "10.1.8",
     "express": "4.22.2",
-    "express-list-endpoints": "6.0.0",
+    "express-list-endpoints": "7.1.1",
     "husky": "8.0.3",
     "lint-staged": "13.2.3",
     "mocha": "10.8.2",
