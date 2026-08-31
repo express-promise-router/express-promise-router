@@ -1469,10 +1469,10 @@ execa@^7.0.0:
     signal-exit "^3.0.7"
     strip-final-newline "^3.0.0"
 
-express-list-endpoints@6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/express-list-endpoints/-/express-list-endpoints-6.0.0.tgz#903f000b0cc954bbc35ca44e7aa3917e5292d0c2"
-  integrity sha512-1I30bSVego+AU/eSsX/bV2xrOXW5tFhsuXZp7wZd9396bAAxH7KHaAwLXQYra0Aw33xA67HmNiceGf2SOvXaLg==
+express-list-endpoints@7.1.1:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/express-list-endpoints/-/express-list-endpoints-7.1.1.tgz#f261b146e6a75e9c185bd14054b4800bf99681b2"
+  integrity sha512-SA6YHH1r6DrioJ4fFJNqiwu1FweGFqJZO9KBApMzwPosoSGPOX2AW0wiMepOXjojjEXDuP9whIvckomheErbJA==
 
 express@4.22.2:
   version "4.22.2"
